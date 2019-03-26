@@ -17,6 +17,10 @@ import java.util.concurrent.CompletableFuture;
  * @since 3/26/19.
  */
 public interface DekigokoroClient {
+    static DekigokoroClient create(final String token) {
+        return new DekigokoroClientImpl(token);
+    }
+    
     /**
      * @return The dekigokoro application token used by this client instance.
      */

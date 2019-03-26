@@ -1,5 +1,7 @@
 package io.dekigokoro.client.levels;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.math.BigDecimal;
 
 /**
@@ -7,16 +9,16 @@ import java.math.BigDecimal;
  * @since 3/26/19.
  */
 public class LevelsData {
-    private final String player;
-    private final String subkey;
-    private final String application;
-    private final BigDecimal exp;
+    @JsonProperty("player_id")
+    private String player;
+    @JsonProperty("subkey")
+    private String subkey;
+    @JsonProperty("app_id")
+    private String application;
+    @JsonProperty("balance")
+    private BigDecimal exp;
     
-    public LevelsData(final String player, final String subkey, final String application, final BigDecimal exp) {
-        this.player = player;
-        this.subkey = subkey;
-        this.application = application;
-        this.exp = exp;
+    LevelsData() {
     }
     
     public String getPlayer() {
@@ -33,5 +35,21 @@ public class LevelsData {
     
     public BigDecimal getExp() {
         return exp;
+    }
+    
+    void setPlayer(final String player) {
+        this.player = player;
+    }
+    
+    void setSubkey(final String subkey) {
+        this.subkey = subkey;
+    }
+    
+    void setApplication(final String application) {
+        this.application = application;
+    }
+    
+    void setExp(final BigDecimal exp) {
+        this.exp = exp;
     }
 }

@@ -1,5 +1,7 @@
 package io.dekigokoro.client.currency;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.math.BigDecimal;
 
 /**
@@ -7,16 +9,16 @@ import java.math.BigDecimal;
  * @since 3/26/19.
  */
 public final class CurrencyData {
-    private final String player;
-    private final String subkey;
-    private final String application;
-    private final BigDecimal balance;
+    @JsonProperty("player_id")
+    private String player;
+    @JsonProperty("subkey")
+    private String subkey;
+    @JsonProperty("app_id")
+    private String application;
+    @JsonProperty("balance")
+    private BigDecimal balance;
     
-    public CurrencyData(final String player, final String subkey, final String application, final BigDecimal balance) {
-        this.player = player;
-        this.subkey = subkey;
-        this.application = application;
-        this.balance = balance;
+    CurrencyData() {
     }
     
     public String getPlayer() {
@@ -33,5 +35,21 @@ public final class CurrencyData {
     
     public BigDecimal getBalance() {
         return balance;
+    }
+    
+    void setPlayer(final String player) {
+        this.player = player;
+    }
+    
+    void setSubkey(final String subkey) {
+        this.subkey = subkey;
+    }
+    
+    void setApplication(final String application) {
+        this.application = application;
+    }
+    
+    void setBalance(final BigDecimal balance) {
+        this.balance = balance;
     }
 }
