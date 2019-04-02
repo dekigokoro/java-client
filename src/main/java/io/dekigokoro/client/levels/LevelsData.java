@@ -8,7 +8,7 @@ import java.math.BigDecimal;
  * @author amy
  * @since 3/26/19.
  */
-public class LevelsData {
+public final class LevelsData {
     @JsonProperty("player_id")
     private String player;
     @JsonProperty("subkey")
@@ -25,28 +25,28 @@ public class LevelsData {
         return player;
     }
     
-    public String getSubkey() {
-        return subkey;
-    }
-    
-    public String getApplication() {
-        return application;
-    }
-    
-    public BigDecimal getExp() {
-        return exp;
-    }
-    
     void setPlayer(final String player) {
         this.player = player;
+    }
+    
+    public String getSubkey() {
+        return subkey;
     }
     
     void setSubkey(final String subkey) {
         this.subkey = subkey;
     }
     
+    public String getApplication() {
+        return application;
+    }
+    
     void setApplication(final String application) {
         this.application = application;
+    }
+    
+    public BigDecimal getExp() {
+        return exp;
     }
     
     void setExp(final BigDecimal exp) {

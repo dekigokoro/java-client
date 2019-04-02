@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture;
  * @author amy
  * @since 3/26/19.
  */
-public class LevelsHandlerImpl implements LevelsHandler {
+public final class LevelsHandlerImpl implements LevelsHandler {
     private final DekigokoroClient client;
     
     public LevelsHandlerImpl(@Nonnull final DekigokoroClient client) {

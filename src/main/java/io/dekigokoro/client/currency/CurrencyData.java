@@ -25,28 +25,28 @@ public final class CurrencyData {
         return player;
     }
     
-    public String getSubkey() {
-        return subkey;
-    }
-    
-    public String getApplication() {
-        return application;
-    }
-    
-    public BigDecimal getBalance() {
-        return balance;
-    }
-    
     void setPlayer(final String player) {
         this.player = player;
+    }
+    
+    public String getSubkey() {
+        return subkey;
     }
     
     void setSubkey(final String subkey) {
         this.subkey = subkey;
     }
     
+    public String getApplication() {
+        return application;
+    }
+    
     void setApplication(final String application) {
         this.application = application;
+    }
+    
+    public BigDecimal getBalance() {
+        return balance;
     }
     
     void setBalance(final BigDecimal balance) {

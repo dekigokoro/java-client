@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.net.http.HttpResponse;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author amy
@@ -60,7 +61,13 @@ public class Utils {
         }
     }
     
+    @Nonnull
     public static ObjectNode objectNode() {
         return FACTORY.objectNode();
+    }
+    
+    @Nonnull
+    public static ObjectNode mapToObjectNode(@Nonnull final Map<String, Object> map) {
+        return MAPPER.valueToTree(map);
     }
 }

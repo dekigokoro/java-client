@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture;
  * @author amy
  * @since 3/26/19.
  */
-public class CurrencyHandlerImpl implements CurrencyHandler {
+public final class CurrencyHandlerImpl implements CurrencyHandler {
     private final DekigokoroClient client;
     
     public CurrencyHandlerImpl(@Nonnull final DekigokoroClient client) {
