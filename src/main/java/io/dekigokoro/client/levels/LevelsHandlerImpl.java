@@ -63,6 +63,25 @@ public final class LevelsHandlerImpl implements LevelsHandler {
                 .thenApply(Optional::ofNullable);
     }
     
+    @Override
+    public CompletableFuture<Optional<LevelsData>> incrementExp(@Nonnull final String player,
+                                                                @Nonnull final BigDecimal increment) {
+        return client.patch(Routes.CURRENCY_INCREMENT_PLAYER.param("player", player),
+                Utils.objectNode().put("increment", increment).toString())
+                .thenApply(e -> Utils.objectFromDekigokoroResponse(e, LevelsData.class))
+                .thenApply(Optional::ofNullable);
+    }
+    
+    @Override
+    public CompletableFuture<Optional<LevelsData>> incrementExp(@Nonnull final String player,
+                                                                @Nonnull final String subkey,
+                                                                @Nonnull final BigDecimal increment) {
+        return client.patch(Routes.CURRENCY_INCREMENT_PLAYER.param("player", player).param("subkey", subkey),
+                Utils.objectNode().put("increment", increment).toString())
+                .thenApply(e -> Utils.objectFromDekigokoroResponse(e, LevelsData.class))
+                .thenApply(Optional::ofNullable);
+    }
+    
     @Nonnull
     @Override
     public CompletableFuture<List<LevelsData>> getRankings(final int limit, final int after) {

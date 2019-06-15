@@ -67,6 +67,31 @@ public interface CurrencyHandler {
                                                          @Nonnull BigDecimal balance);
     
     /**
+     * Increment the given player's balance by the given amount.
+     *
+     * @param player    The id of the player to increment the balance for.
+     * @param increment The amount to increment by.
+     *
+     * @return A future that completes with an optional that may contain the
+     * player's data.
+     */
+    CompletableFuture<Optional<CurrencyData>> incrementBalance(@Nonnull String player, @Nonnull BigDecimal increment);
+    
+    /**
+     * Increment the given player's balance by the given amount in the given
+     * subkey.
+     *
+     * @param player    The id of the player to increment the balance for.
+     * @param subkey    The subkey to increment the balance under.
+     * @param increment The amount to increment by.
+     *
+     * @return A future that completes with an optional that may contain the
+     * player's data.
+     */
+    CompletableFuture<Optional<CurrencyData>> incrementBalance(@Nonnull String player, @Nonnull String subkey,
+                                                               @Nonnull BigDecimal increment);
+    
+    /**
      * Gets the highest-to-lowest ordered currency balances.
      *
      * @return The first 100 players.

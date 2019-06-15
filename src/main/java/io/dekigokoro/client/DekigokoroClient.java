@@ -82,4 +82,8 @@ public interface DekigokoroClient {
     default CompletableFuture<HttpResponse<String>> put(@Nonnull final Route route, @Nonnull final String body) {
         return sendRequest(getNewRequest(route.getRoute()).PUT(BodyPublishers.ofString(body)).build());
     }
+    
+    default CompletableFuture<HttpResponse<String>> patch(@Nonnull final Route route, @Nonnull final String body) {
+        return sendRequest(getNewRequest(route.getRoute()).method("PATCH", BodyPublishers.ofString(body)).build());
+    }
 }

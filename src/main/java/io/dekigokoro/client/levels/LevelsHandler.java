@@ -66,6 +66,31 @@ public interface LevelsHandler {
     CompletableFuture<Optional<LevelsData>> putExp(@Nonnull String player, @Nonnull String subkey, @Nonnull BigDecimal exp);
     
     /**
+     * Increment the given player's exp by the given amount.
+     *
+     * @param player    The id of the player to increment the exp for.
+     * @param increment The amount to increment by.
+     *
+     * @return A future that completes with an optional that may contain the
+     * player's data.
+     */
+    CompletableFuture<Optional<LevelsData>> incrementExp(@Nonnull String player, @Nonnull BigDecimal increment);
+    
+    /**
+     * Increment the given player's exp by the given amount in the given
+     * subkey.
+     *
+     * @param player    The id of the player to increment the exp for.
+     * @param subkey    The subkey to increment the exp under.
+     * @param increment The amount to increment by.
+     *
+     * @return A future that completes with an optional that may contain the
+     * player's data.
+     */
+    CompletableFuture<Optional<LevelsData>> incrementExp(@Nonnull String player, @Nonnull String subkey,
+                                                         @Nonnull BigDecimal increment);
+    
+    /**
      * Gets the highest-to-lowest ordered currency exps.
      *
      * @return The first 100 players.
