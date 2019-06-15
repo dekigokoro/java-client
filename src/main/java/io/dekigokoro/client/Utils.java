@@ -1,7 +1,6 @@
 package io.dekigokoro.client;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -18,9 +17,12 @@ import java.util.Map;
  * @author amy
  * @since 3/26/19.
  */
-public class Utils {
+public final class Utils {
     private static final ObjectMapper MAPPER = new ObjectMapper();
     private static final JsonNodeFactory FACTORY = JsonNodeFactory.withExactBigDecimals(true);
+    
+    private Utils() {
+    }
     
     @Nullable
     public static <T> T objectFromDekigokoroResponse(@Nonnull final HttpResponse<String> res, @Nonnull final Class<T> type) {
@@ -69,5 +71,10 @@ public class Utils {
     @Nonnull
     public static ObjectNode mapToObjectNode(@Nonnull final Map<String, Object> map) {
         return MAPPER.valueToTree(map);
+    }
+    
+    @Nonnull
+    public static ObjectNode stringToObjectNode(@Nonnull final String data) {
+        return MAPPER.valueToTree(data);
     }
 }

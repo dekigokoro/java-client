@@ -4,6 +4,8 @@ import io.dekigokoro.client.currency.CurrencyHandler;
 import io.dekigokoro.client.currency.CurrencyHandlerImpl;
 import io.dekigokoro.client.levels.LevelsHandler;
 import io.dekigokoro.client.levels.LevelsHandlerImpl;
+import io.dekigokoro.client.relationships.RelationshipsHandler;
+import io.dekigokoro.client.relationships.RelationshipsHandlerImpl;
 import io.dekigokoro.client.userdata.UserDataHandler;
 import io.dekigokoro.client.userdata.UserDataHandlerImpl;
 
@@ -19,13 +21,15 @@ public class DekigokoroClientImpl implements DekigokoroClient {
     private final CurrencyHandler currencyHandler;
     private final LevelsHandler levelsHandler;
     private final UserDataHandler userDataHandler;
+    private final RelationshipsHandler relationshipsHandler;
     private final HttpClient client;
     
-    public DekigokoroClientImpl(final String token) {
+    DekigokoroClientImpl(final String token) {
         this.token = token;
         currencyHandler = new CurrencyHandlerImpl(this);
         levelsHandler = new LevelsHandlerImpl(this);
         userDataHandler = new UserDataHandlerImpl(this);
+        relationshipsHandler = new RelationshipsHandlerImpl(this);
         client = HttpClient.newBuilder().build();
     }
     
@@ -35,27 +39,33 @@ public class DekigokoroClientImpl implements DekigokoroClient {
         return token;
     }
     
-    @Override
     @Nonnull
+    @Override
     public HttpClient getClient() {
         return client;
     }
     
-    @Override
     @Nonnull
+    @Override
     public CurrencyHandler getCurrencyHandler() {
         return currencyHandler;
     }
     
-    @Override
     @Nonnull
+    @Override
     public LevelsHandler getLevelsHandler() {
         return levelsHandler;
     }
     
-    @Override
     @Nonnull
+    @Override
     public UserDataHandler getUserDataHandler() {
         return userDataHandler;
+    }
+    
+    @Nonnull
+    @Override
+    public RelationshipsHandler getRelationshipsHandler() {
+        return relationshipsHandler;
     }
 }

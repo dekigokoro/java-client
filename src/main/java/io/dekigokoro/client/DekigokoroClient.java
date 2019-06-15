@@ -3,6 +3,7 @@ package io.dekigokoro.client;
 import io.dekigokoro.client.Routes.Route;
 import io.dekigokoro.client.currency.CurrencyHandler;
 import io.dekigokoro.client.levels.LevelsHandler;
+import io.dekigokoro.client.relationships.RelationshipsHandler;
 import io.dekigokoro.client.userdata.UserDataHandler;
 
 import javax.annotation.Nonnull;
@@ -50,6 +51,12 @@ public interface DekigokoroClient {
     @Nonnull
     UserDataHandler getUserDataHandler();
     
+    /**
+     * @return The handler for all relationships-related things.
+     */
+    @Nonnull
+    RelationshipsHandler getRelationshipsHandler();
+    
     @Nonnull
     default String getApiBase() {
         return "/api/v1";
@@ -83,7 +90,13 @@ public interface DekigokoroClient {
         return sendRequest(getNewRequest(route.getRoute()).PUT(BodyPublishers.ofString(body)).build());
     }
     
+    @Nonnull
     default CompletableFuture<HttpResponse<String>> patch(@Nonnull final Route route, @Nonnull final String body) {
         return sendRequest(getNewRequest(route.getRoute()).method("PATCH", BodyPublishers.ofString(body)).build());
+    }
+    
+    @Nonnull
+    default CompletableFuture<HttpResponse<String>> delete(@Nonnull final Route route) {
+        return sendRequest(getNewRequest(route.getRoute()).DELETE().build());
     }
 }
