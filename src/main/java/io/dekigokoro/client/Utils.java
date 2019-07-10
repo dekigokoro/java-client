@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import io.dekigokoro.client.exceptions.NotAuthorizedException;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -27,6 +28,9 @@ public final class Utils {
     @Nullable
     public static <T> T objectFromDekigokoroResponse(@Nonnull final HttpResponse<String> res, @Nonnull final Class<T> type) {
         switch(res.statusCode()) {
+            case 403: {
+                throw new NotAuthorizedException(res.body());
+            }
             case 404: {
                 return null;
             }
@@ -46,6 +50,9 @@ public final class Utils {
     @Nonnull
     public static <T> List<T> arrayFromDekigokoroResponse(@Nonnull final HttpResponse<String> res) {
         switch(res.statusCode()) {
+            case 403: {
+                throw new NotAuthorizedException(res.body());
+            }
             case 404: {
                 return Collections.emptyList();
             }
